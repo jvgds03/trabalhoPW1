@@ -1,7 +1,6 @@
 const jogadores = [];
 let times = [];
 let contratacao = [];
-let mostrarJogador = false;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////FUNÇÕES MENUS
@@ -97,30 +96,82 @@ function cadastrarJogador(){
     if(nome == ''){
         return alert('O campo "Nome" não pode ficar em branco.');
     }
+    if(nome == null){
+        return alert("Cadastro encerrado!");
+    }
     newJogador.nome = nome;
 
-    let cpf = prompt("Digite o cpf do jogador");
+    let cpf = prompt("Digite o CPF do jogador");
+    if(cpf == ''){
+        return alert('O campo "CPF" não pode ficar em branco.')
+    }
+    if(cpf == null){
+        return alert("Cadastro encerrado!");
+    }
     newJogador.cpf = cpf;
 
     let dataNasc = prompt("Digite a data de nascimento do jogador");
+    if(dataNasc == ''){
+        return alert('O campo "Data de Nascimento" não pode ficar em branco.')
+    }
+    if(dataNasc == null){
+        return alert("Cadastro encerrado!");
+    }
     newJogador.dataNasc = dataNasc;
+    
 
     let sexo = prompt("Digite o sexo do jogador");
+    if(sexo == ''){
+        return alert('O campo "Sexo" não pode ficar em branco.')
+    }
+    if(sexo == null){
+        return alert("Cadastro encerrado!");
+    }
     newJogador.sexo = sexo;
 
     let peso = prompt("Digite o peso do jogador");
+    if(peso == ''){
+        return alert('O campo "Peso" não pode ficar em branco.')
+    }
+    if(peso == null){
+        return alert("Cadastro encerrado!");
+    }
     newJogador.peso = peso;
 
     let altura = prompt("Digite a altura do jogado");
+    if(altura == ''){
+        return alert('O campo "Altura" não pode ficar em branco.')
+    }
+    if(altura == null){
+        return alert("Cadastro encerrado!");
+    }
     newJogador.altura = altura;
 
     let email = prompt("Digite o email do jogador");
+    if(email == ''){
+        return alert('O campo "Email" não pode ficar em branco.')
+    }
+    if(email == null){
+        return alert("Cadastro encerrado!");
+    }
     newJogador.email = email;
 
     let telefone = prompt("Digite o telefone do jogador");
+    if(telefone == ''){
+        return alert('O campo "Telefone" não pode ficar em branco.')
+    }
+    if(telefone == null){
+        return alert("Cadastro encerrado!");
+    }
     newJogador.telefone = telefone;
 
     let posicao = prompt("Digite a posicao do jogador");
+    if(posicao == ''){
+        return alert('O campo "Posicao" não pode ficar em branco.')
+    }
+    if(posicao == null){
+        return alert("Cadastro encerrado!");
+    }
     newJogador.posicao = posicao;
 
     jogadores.push(newJogador);
@@ -131,42 +182,140 @@ function cadastrarJogador(){
 
 function cadastrarTime(){
     let newTime = {};
+    let fundadores = [];
 
     let nome = prompt("Digite o nome do time"); 
     if(nome == ''){
         return alert('O campo "Nome" não pode ficar em branco.');
     }
+    if(nome == null){
+        return alert("Cadastro encerrado!");
+    }
     newTime.nome = nome;
 
     let codigo = prompt("Digite o codigo do time");
+    if(codigo == ''){
+        return alert('O campo "Código" não pode ficar em branco.')
+    }
+    if(codigo == null){
+        return alert("Cadastro encerrado!");
+    }
     newTime.codigo = codigo;
 
     let dataFundacao = prompt("Digite a data de fundação do time");
+    if(dataFundacao == ''){
+        return alert('O campo "Data da Fundação" não pode ficar em branco.')
+    }
+    if(dataFundacao == null){
+        return alert("Cadastro encerrado!");
+    }
     newTime.dataFundacao = dataFundacao;
 
     let logradouro = prompt("Digite o logradouro do time");
+    if(logradouro == ''){
+        return alert('O campo "Logradouro" não pode ficar em branco.')
+    }
+    if(logradouro == null){
+        return alert("Cadastro encerrado!");
+    }
     newTime.logradouro = logradouro;
 
     let nro = prompt("Digite o número do logradouro do time");
+    if(nro == ''){
+        return alert('O campo "Número" não pode ficar em branco.')
+    }
+    if(nro == null){
+        return alert("Cadastro encerrado!");
+    }
     newTime.nro = nro;
 
     let cep = prompt("Digite o CEP do time");
+    if(cep == ''){
+        return alert('O campo "CEP" não pode ficar em branco.')
+    }
+    if(cep == null){
+        return alert("Cadastro encerrado!");
+    }
     newTime.cep = cep;
 
     let cidade = prompt("Digite a cidade do time");
+    if(cidade == ''){
+        return alert('O campo "Cidade" não pode ficar em branco.')
+    }
+    if(cidade == null){
+        return alert("Cadastro encerrado!");
+    }
     newTime.cidade = cidade;
 
     let estado = prompt("Digite o estado do time");
+    if(estado == ''){
+        return alert('O campo "Estado" não pode ficar em branco.')
+    }
+    if(estado == null){
+        return alert("Cadastro encerrado!");
+    }
     newTime.estado = estado;
 
     let telefone = prompt("Digite o telefone do time");
+    if(telefone == ''){
+        return alert('O campo "Telefone" não pode ficar em branco.')
+    }
+    if(telefone == null){
+        return alert("Cadastro encerrado!");
+    }
     newTime.telefone = telefone;
 
-    let fundador = prompt("Digite o fundador do time");
-    newTime.fundador = fundador;
+    let cadFundadores;
+    cadFundadores = cadastrarFundadores();
+    
+
+    function cadastrarFundadores(){
+        let qtdFundadores = prompt("Digite a quantidade de fundadores do time.");
+    
+        if (isNaN(qtdFundadores)) {
+            return alert("A entrada digitada não é um número inteiro válido.");
+        } 
+
+        if((qtdFundadores <= 0) || (qtdFundadores == '')){
+            return alert("Entrada inválida.")
+        }
+
+        qtdFundadores = parseInt(qtdFundadores);
+
+        for(let i = 0; i < qtdFundadores; i++){
+            let fundador
+            if(i == 0){
+                fundador = prompt("Digite o nome do 1º fundador");
+                if(fundador == ''){
+                    return alert('O campo "Fundador" não pode ficar em branco.')
+                }
+                if(fundador == null){
+                    return alert("Cadastro encerrado!");
+                }
+
+                fundadores.push(fundador);
+
+            }else{
+                fundador = prompt('Digite o neme do proximo fundador')
+                if(fundador == ''){
+                    return alert('O campo "Fundador" não pode ficar em branco.')
+                }
+                if(fundador == null){
+                    return alert("Cadastro encerrado!");
+                }
+
+                fundadores.push(fundador);
+            }
+            
+        }
+
+        newTime.fundador = fundadores;
+    }
 
     times.push(newTime);
 }
+
+
 
 
 

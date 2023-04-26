@@ -674,6 +674,90 @@ function editarJogador(){
 
 
 
+function editarTime(){
+    
+    let codigo = prompt("Digite o codigo do time");
+    let timeCadasdtrado = false;
+    times.forEach(time => {
+        if(time.codigo == codigo){
+            timeCadasdtrado = true;
+            let novoNome = prompt("Digite o novo nome");
+            if (!novoNome == "") {
+                time.nome = novoNome;
+            }
+            
+            let novaDtfundac = prompt("Digite a nova data de fundação");
+            if (!novaDtfundac == "") {
+                time.dataFundacao = novaDtfundac;
+            }
+
+            let novoLogradouro = prompt("Digite o novo logradouro");
+            if (!novoLogradouro == "") {
+                time.logradouro = novoLogradouro;
+            }
+
+            let novoNRO = prompt("Digite o novo número");
+            if (!novoNRO == "") {
+                time.nro = novoNRO;
+            }
+
+            let novoCEP = prompt("Digite o novo CEP");
+            if (!novoCEP == "") {
+                time.cep = novoCEP;
+            }
+
+            let novaCidade = prompt("Digite o novo email");
+            if (!novaCidade == "") {
+                time.cidade = novaCidade;
+            }
+
+            let novoEstado = prompt("Digite o novo estado");
+            if (!novoEstado == "") {
+                time.estado = novoEstado;
+            }
+
+            let novoTel = prompt("Digite o novo telefone");
+            if (!novoTel == "") {
+                time.telefone = novoTel;
+            }
+
+            let novofundador = prompt("Digite o novo fundador");
+            if (!novofundador == "") {
+                time.fundador = novofundador;
+            }
+
+            document.getElementById("show").innerHTML = "";
+
+            string = (
+                "<br>TIME EDITADO "  +
+                "<br>Nome: " + time.nome +
+                "<br>CODIGO: " + time.codigo + 
+                "<br>Dt Fundação: " + time.dataFundacao + 
+                "<br>Logradouro: " + time.logradouro + 
+                "<br>Número: " + time.nro +
+                "<br>CEP: " + time.cep +
+                "<br>Cidade: " + time.cidade +
+                "<br>Estado: " + time.estado +
+                "<br>Telefone: " + time.telefone +
+                "<br>Fundador: " + time.fundador 
+            );
+
+            document.getElementById("show").innerHTML = string;
+        }
+    });
+    
+    if(!timeCadasdtrado){ 
+        return alert("Jogador não cadstrado.");
+    }
+}
+
+
+
+
+
+
+
+
 function editarContratacao(){
     
     let cpfJogador = prompt("Digite o CPF do jogador");

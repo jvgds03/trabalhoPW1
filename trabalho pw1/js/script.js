@@ -39,7 +39,7 @@ let time1 = {}
     time1.cidade = "São Carlos",
     time1.estado = "SP",
     time1.telefone = "7878445512",
-    time1.fundador = "Roneldino";
+    time1.fundador = ["Roneldino","Kaka"];
     
 
 let time2 = {}
@@ -52,7 +52,7 @@ let time2 = {}
     time2.cidade = "São Carlos",
     time2.estado = "SP",
     time2.telefone = "7215345512",
-    time2.fundador = "Jao Jorge";
+    time2.fundador = ["Jao Jorge", "Abel Braga","Renato Gaucho"];
 
 
 let contrato1 = {}
@@ -398,8 +398,19 @@ function listarTimes(){
             "<br>Cidade: " + time.cidade +
             "<br>Estado: " + time.estado +
             "<br>Telefone: " + time.telefone +
-            "<br>Fundador: " + time.fundador + "<br>"
+            "<br>Fundador: " 
         );
+        countFundador = 0;
+        let array = time.fundador;
+        array.forEach(element => {
+            ++countFundador;
+            if(countFundador == array.length){
+                string += element + "<br>";
+            }else{
+                string += element + ", ";
+            }
+            
+        });
 
     document.getElementById("show").innerHTML += string;
             

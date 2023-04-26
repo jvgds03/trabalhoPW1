@@ -320,6 +320,7 @@ function cadastrarTime(){
 
 
 
+
 function cadastrarContratacao(){
     let newContrato = {};
 
@@ -481,6 +482,27 @@ function excluirTime(){
 }
 
 
+
+
+
+function excluirContratacao(){
+
+    contratoCadasdtrado = false;
+    let cpfJogador = prompt("Digite o cpf do jogador"); 
+    contratacao.forEach(contrato => {
+        if(contrato.cpfJogador == cpfJogador){
+            contratacao.splice(contrato,1);
+            contratoCadasdtrado = true;
+            return alert("contrato removido com sucesso")
+        }
+    });
+
+    if(!contratoCadasdtrado){ 
+        return alert("contrato não cadstrado.");
+    }
+}
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////FUNÇÕES LISTAR UM
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -541,6 +563,34 @@ function listarTime(){
     });
 
     if(!timeCadasdtrado){ 
+        return alert("Jogador não cadstrado.");
+    }
+}
+
+
+
+
+function listarContratacao(){
+    document.getElementById("show").innerHTML = "";
+    let cpfJogador = prompt("Digite o cpf do jogador");
+    let string = "";
+    let contratoCadasdtrado = false;
+    contratacao.forEach(contrato => {
+        if(contrato.cpfJogador == cpfJogador){
+            string = (
+                "<br>CONTRATO" +
+                "<br>CPF Jogador : " + contrato.cpfJogador +
+                "<br>CODIGO Time : " + contrato.codTime + 
+                "<br>Dt Início: " + contrato.dataInicio + 
+                "<br>Salário: R$" + contrato.salario + 
+                "<br>Motivo Saida: " + contrato.motivoSaida
+            );
+            contratoCadasdtrado = true;
+            return document.getElementById("show").innerHTML = string;
+        }            
+    });
+
+    if(!contratoCadasdtrado){ 
         return alert("Jogador não cadstrado.");
     }
 }
@@ -624,82 +674,52 @@ function editarJogador(){
 
 
 
-// function editarTime(){
+function editarContratacao(){
     
-//     let codigo = prompt("Digite o codigo do time");
-//     let timeCadasdtrado = false;
-//     times.forEach(time => {
-//         if(time.codigo == codigo){
-//             timeCadasdtrado = true;
-//             let novoNome = prompt("Digite o novo nome");
-//             if (!novoNome == "") {
-//                 time.nome = novoNome;
-//             }
+    let cpfJogador = prompt("Digite o CPF do jogador");
+    let contratoCadasdtrado = false;
+    contratacao.forEach(contrato => {
+        if(contrato.cpfJogador == cpfJogador){
+            contratoCadasdtrado = true;
+            let novoCodTime = prompt("Digite o novo codigo de time");
+            if (!novoCodTime == "") {
+                contrato.codTime = novoCodTime;
+            }
             
-//             let novaDtfundac = prompt("Digite a nova data de fundação");
-//             if (!novaDtfundac == "") {
-//                 time.dataFundacao = novaDtfundac;
-//             }
+            let novaDtInicio = prompt("Digite a nova data de inicio");
+            if (!novaDtInicio == "") {
+                contrato.dataInicio = novaDtInicio;
+            }
 
-//             let novoLogradouro = prompt("Digite o novo logradouro");
-//             if (!novoLogradouro == "") {
-//                 time.logradouro = novoLogradouro;
-//             }
+            let novoSalario = prompt("Digite o novo salario");
+            if (!novoSalario == "") {
+                contrato.salario = novoSalario;
+            }
 
-//             let novoNRO = prompt("Digite o novo número");
-//             if (!novoNRO == "") {
-//                 time.nro = novoNRO;
-//             }
+            let novoMotivoSaida = prompt("Digite o novo motivo de saida");
+            if (!novoMotivoSaida == "") {
+                contrato.motivoSaida = novoMotivoSaida;
+            }
 
-//             let novoCEP = prompt("Digite o novo CEP");
-//             if (!novoCEP == "") {
-//                 time.cep = novoCEP;
-//             }
+            document.getElementById("show").innerHTML = "";
 
-//             let novaCidade = prompt("Digite o novo email");
-//             if (!novaCidade == "") {
-//                 time.cidade = novaCidade;
-//             }
+            string = (
+                "<br>CONTRATO" +
+                "<br>CPF Jogador : " + contrato.cpfJogador +
+                "<br>CODIGO Time : " + contrato.codTime + 
+                "<br>Dt Início: " + contrato.dataInicio + 
+                "<br>Salário: R$" + contrato.salario + 
+                "<br>Motivo Saida: " + contrato.motivoSaida
+            );
 
-//             let novoEstado = prompt("Digite o novo estado");
-//             if (!novoEstado == "") {
-//                 time.estado = novoEstado;
-//             }
-
-//             let novoTel = prompt("Digite o novo telefone");
-//             if (!novoTel == "") {
-//                 time.telefone = novoTel;
-//             }
-
-//             let novofundador = prompt("Digite o novo fundador");
-//             if (!novofundador == "") {
-//                 time.fundador = novofundador;
-//             }
-
-//             document.getElementById("show").innerHTML = "";
-
-//             string = (
-//                 "<br>TIME EDITADO "  +
-//                 "<br>Nome: " + time.nome +
-//                 "<br>CODIGO: " + time.codigo + 
-//                 "<br>Dt Fundação: " + time.dataFundacao + 
-//                 "<br>Logradouro: " + time.logradouro + 
-//                 "<br>Número: " + time.nro +
-//                 "<br>CEP: " + time.cep +
-//                 "<br>Cidade: " + time.cidade +
-//                 "<br>Estado: " + time.estado +
-//                 "<br>Telefone: " + time.telefone +
-//                 "<br>Fundador: " + time.fundador 
-//             );
-
-//             document.getElementById("show").innerHTML = string;
-//         }
-//     });
+            document.getElementById("show").innerHTML = string;
+        }
+    });
     
-//     if(!timeCadasdtrado){ 
-//         return alert("Jogador não cadstrado.");
-//     }
-// }
+    if(!contratoCadasdtrado){ 
+        return alert("Jogador não cadstrado.");
+    }
+}
 
 
 

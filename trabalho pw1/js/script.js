@@ -15,7 +15,7 @@ let jogador1 = {}
     jogador1.altura = "177",
     jogador1.email = "joaojoaoao@gmail.com",
     jogador1.telefone = "7878445512",
-    jogador1.posicao = "meia";
+    jogador1.posicao = "Meio-campo";
 
 let jogador2 = {}
     jogador2.nome = "arnoldo";
@@ -26,7 +26,7 @@ let jogador2 = {}
     jogador2.altura = "167",
     jogador2.email = "joaojoaaaddoao@gmail.com",
     jogador2.telefone = "787844554589",
-    jogador2.posicao = "lateral";
+    jogador2.posicao = "Defesa";
 
 
 let time1 = {}
@@ -91,15 +91,8 @@ contratacao.push(contrato2);
 
 function cadastrarJogador(){
     let newJogador = {};
+    let jogadorExiste = false;
 
-    let nome = prompt("Digite o nome do jogador"); 
-    if(nome == ''){
-        return alert('O campo "Nome" não pode ficar em branco.');
-    }
-    if(nome == null){
-        return alert("Cadastro encerrado!");
-    }
-    newJogador.nome = nome;
 
     let cpf = prompt("Digite o CPF do jogador");
     if(cpf == ''){
@@ -108,95 +101,117 @@ function cadastrarJogador(){
     if(cpf == null){
         return alert("Cadastro encerrado!");
     }
+
+    jogadores.forEach(element => {
+        if(element.cpf == cpf){
+            jogadorExiste = true;
+            return alert("Este jogador já está cadastrado.")
+        }
+    });
     newJogador.cpf = cpf;
 
-    let dataNasc = prompt("Digite a data de nascimento do jogador");
-    if(dataNasc == ''){
-        return alert('O campo "Data de Nascimento" não pode ficar em branco.')
-    }
-    if(dataNasc == null){
-        return alert("Cadastro encerrado!");
-    }
-    newJogador.dataNasc = dataNasc;
-    
 
-    let sexo = prompt("Digite o sexo do jogador");
-    if(sexo == ''){
-        return alert('O campo "Sexo" não pode ficar em branco.')
-    }
-    if(sexo == null){
-        return alert("Cadastro encerrado!");
-    }
-    newJogador.sexo = sexo;
+    if(!jogadorExiste){
+        let nome = prompt("Digite o nome do jogador"); 
+        if(nome == ''){
+            return alert('O campo "Nome" não pode ficar em branco.');
+        }
+        if(nome == null){
+            return alert("Cadastro encerrado!");
+        }
+        newJogador.nome = nome;
 
-    let peso = prompt("Digite o peso do jogador");
-    if(peso == ''){
-        return alert('O campo "Peso" não pode ficar em branco.')
-    }
-    if(peso == null){
-        return alert("Cadastro encerrado!");
-    }
-    newJogador.peso = peso;
 
-    let altura = prompt("Digite a altura do jogado");
-    if(altura == ''){
-        return alert('O campo "Altura" não pode ficar em branco.')
-    }
-    if(altura == null){
-        return alert("Cadastro encerrado!");
-    }
-    newJogador.altura = altura;
+        let dataNasc = prompt("Digite a data de nascimento do jogador");
+        if(dataNasc == ''){
+            return alert('O campo "Data de Nascimento" não pode ficar em branco.')
+        }
+        if(dataNasc == null){
+            return alert("Cadastro encerrado!");
+        }
+        newJogador.dataNasc = dataNasc;
+        
 
-    let email = prompt("Digite o email do jogador");
-    if(email == ''){
-        return alert('O campo "Email" não pode ficar em branco.')
-    }
-    if(email == null){
-        return alert("Cadastro encerrado!");
-    }
-    newJogador.email = email;
+        let sexo = prompt("Digite o sexo do jogador");
+        if(sexo == ''){
+            return alert('O campo "Sexo" não pode ficar em branco.')
+        }
+        if(sexo == null){
+            return alert("Cadastro encerrado!");
+        }
+        newJogador.sexo = sexo;
 
-    let telefone = prompt("Digite o telefone do jogador");
-    if(telefone == ''){
-        return alert('O campo "Telefone" não pode ficar em branco.')
-    }
-    if(telefone == null){
-        return alert("Cadastro encerrado!");
-    }
-    newJogador.telefone = telefone;
+        let peso = prompt("Digite o peso do jogador");
+        if(peso == ''){
+            return alert('O campo "Peso" não pode ficar em branco.')
+        }
+        if(peso == null){
+            return alert("Cadastro encerrado!");
+        }
+        newJogador.peso = peso;
 
-    let posicao = prompt("Escolha a posição do jogador\n"
-                        + "1 - Goleiro\n"
-                        + "2 - Defesa\n"
-                        + "3 - Meio-campo\n"
-                        + "4 - Ataque");
+        let altura = prompt("Digite a altura do jogado");
+        if(altura == ''){
+            return alert('O campo "Altura" não pode ficar em branco.')
+        }
+        if(altura == null){
+            return alert("Cadastro encerrado!");
+        }
+        newJogador.altura = altura;
 
-    console.log(posicao);
+        let email = prompt("Digite o email do jogador");
+        if(email == ''){
+            return alert('O campo "Email" não pode ficar em branco.')
+        }
+        if(email == null){
+            return alert("Cadastro encerrado!");
+        }
+        newJogador.email = email;
 
-    if(posicao == ''){
-        return alert('O campo "Posicao" não pode ficar em branco.')
-    }
-    if(posicao == null){
-        return alert("Cadastro encerrado!");
-    }
-    switch(posicao) {
-        case "1":
-            newJogador.posicao = "Goleiro";
-            break;
-        case "2":
-            newJogador.posicao = "Defesa";
-            break
-        case "3":
-            newJogador.posicao = "Meio-campo";
-            break
-        case "4":
-            newJogador.posicao = "Ataque";
-            break
-        default:
-            return alert("Resposta inválida")
-    }
+        let telefone = prompt("Digite o telefone do jogador");
+        if(telefone == ''){
+            return alert('O campo "Telefone" não pode ficar em branco.')
+        }
+        if(telefone == null){
+            return alert("Cadastro encerrado!");
+        }
+        newJogador.telefone = telefone;
 
-    jogadores.push(newJogador);
+        let posicao = prompt("Escolha a posição do jogador\n"
+                            + "1 - Goleiro\n"
+                            + "2 - Defesa\n"
+                            + "3 - Meio-campo\n"
+                            + "4 - Ataque");
+
+        console.log(posicao);
+
+        if(posicao == ''){
+            return alert('O campo "Posicao" não pode ficar em branco.')
+        }
+        if(posicao == null){
+            return alert("Cadastro encerrado!");
+        }
+        switch(posicao) {
+            case "1":
+                newJogador.posicao = "Goleiro";
+                break;
+            case "2":
+                newJogador.posicao = "Defesa";
+                break
+            case "3":
+                newJogador.posicao = "Meio-campo";
+                break
+            case "4":
+                newJogador.posicao = "Ataque";
+                break
+            default:
+                return alert("Resposta inválida")
+        }
+
+        jogadores.push(newJogador);
+
+        alert("Jogaador cadastrado com sucesso.")
+    }
 
 }
 

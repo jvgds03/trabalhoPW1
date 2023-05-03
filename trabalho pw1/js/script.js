@@ -165,16 +165,39 @@ function cadastrarJogador(){
     }
     newJogador.telefone = telefone;
 
-    let posicao = prompt("Digite a posicao do jogador");
+    let posicao = prompt("Escolha a posição do jogador\n"
+                        + "1 - Goleiro\n"
+                        + "2 - Defesa\n"
+                        + "3 - Meio-campo\n"
+                        + "4 - Ataque");
+
+    console.log(posicao);
+
     if(posicao == ''){
         return alert('O campo "Posicao" não pode ficar em branco.')
     }
     if(posicao == null){
         return alert("Cadastro encerrado!");
     }
-    newJogador.posicao = posicao;
+    switch(posicao) {
+        case "1":
+            newJogador.posicao = "Goleiro";
+            break;
+        case "2":
+            newJogador.posicao = "Defesa";
+            break
+        case "3":
+            newJogador.posicao = "Meio-campo";
+            break
+        case "4":
+            newJogador.posicao = "Ataque";
+            break
+        default:
+            return alert("Resposta inválida")
+    }
 
     jogadores.push(newJogador);
+
 }
 
 
@@ -482,9 +505,6 @@ function excluirTime(){
 }
 
 
-
-
-
 function excluirContratacao(){
 
     contratoCadasdtrado = false;
@@ -568,8 +588,6 @@ function listarTime(){
 }
 
 
-
-
 function listarContratacao(){
     document.getElementById("show").innerHTML = "";
     let cpfJogador = prompt("Digite o cpf do jogador");
@@ -608,41 +626,65 @@ function editarJogador(){
         if(jogador.cpf == cpf){
             jogadorCadasdtrado = true;
             let novoNome = prompt("Digite o novo nome");
+            if(novoNome == null){
+                return alert("Edição de cadastro encerrado!");
+            }
             if (!novoNome == "") {
                 jogador.nome = novoNome;
             }
             
             let novaDtNasc = prompt("Digite a nova data de nascimento");
+            if(novaDtNasc == null){
+                return alert("Edição de cadastro encerrado!");
+            }
             if (!novaDtNasc == "") {
                 jogador.dataNasc = novaDtNasc;
             }
 
             let novoSexo = prompt("Digite o novo sexo");
+            if(novoSexo == null){
+                return alert("Edição de cadastro encerrado!");
+            }
             if (!novoSexo == "") {
                 jogador.sexo = novoSexo;
             }
 
             let novoPeso = prompt("Digite o novo peso");
+            if(novoPeso == null){
+                return alert("Edição de cadastro encerrado!");
+            }
             if (!novoPeso == "") {
                 jogador.peso = novoPeso;
             }
 
             let novaAltura = prompt("Digite a nova altura");
+            if(novaAltura == null){
+                return alert("Edição de cadastro encerrado!");
+            }
             if (!novaAltura == "") {
                 jogador.altura = novaAltura;
             }
 
             let novoEmail = prompt("Digite o novo email");
+            if(novoEmail == null){
+                return alert("Edição de cadastro encerrado!");
+            }
             if (!novoEmail == "") {
                 jogador.email = novoEmail;
             }
 
             let novoTel = prompt("Digite o novo telefone");
+            if(novoTel == null){
+                return alert("Edição de cadastro encerrado!");
+            }
             if (!novoTel == "") {
                 jogador.telefone = novoTel;
             }
 
             let novaPosicao = prompt("Digite a nova posição");
+            if(novaPosicao == null){
+                return alert("Edição de cadastro encerrado!");
+            }
             if (!novaPosicao == "") {
                 jogador.posicao = novaPosicao;
             }
@@ -672,8 +714,6 @@ function editarJogador(){
 }
 
 
-
-
 function editarTime(){
     
     let codigo = prompt("Digite o codigo do time");
@@ -682,46 +722,73 @@ function editarTime(){
         if(time.codigo == codigo){
             timeCadasdtrado = true;
             let novoNome = prompt("Digite o novo nome");
+            if(novoNome == null){
+                return alert("Edição de cadastro encerrado!");
+            }
             if (!novoNome == "") {
                 time.nome = novoNome;
             }
             
             let novaDtfundac = prompt("Digite a nova data de fundação");
+            if(novaDtfundac == null){
+                return alert("Edição de cadastro encerrado!");
+            }
             if (!novaDtfundac == "") {
                 time.dataFundacao = novaDtfundac;
             }
 
             let novoLogradouro = prompt("Digite o novo logradouro");
+            if(novoLogradouro == null){
+                return alert("Edição de cadastro encerrado!");
+            }
             if (!novoLogradouro == "") {
                 time.logradouro = novoLogradouro;
             }
 
             let novoNRO = prompt("Digite o novo número");
+            if(novoNRO == null){
+                return alert("Edição de cadastro encerrado!");
+            }
             if (!novoNRO == "") {
                 time.nro = novoNRO;
             }
 
             let novoCEP = prompt("Digite o novo CEP");
+            if(novoCEP == null){
+                return alert("Edição de cadastro encerrado!");
+            }
             if (!novoCEP == "") {
                 time.cep = novoCEP;
             }
 
             let novaCidade = prompt("Digite o novo email");
+            if(novaCidade == null){
+                return alert("Edição de cadastro encerrado!");
+            }
             if (!novaCidade == "") {
                 time.cidade = novaCidade;
             }
 
             let novoEstado = prompt("Digite o novo estado");
+            if(novoEstado == null){
+                return alert("Edição de cadastro encerrado!");
+            }
             if (!novoEstado == "") {
                 time.estado = novoEstado;
             }
 
             let novoTel = prompt("Digite o novo telefone");
+            if(novoTel == null){
+                return alert("Edição de cadastro encerrado!");
+            }
             if (!novoTel == "") {
                 time.telefone = novoTel;
             }
 
             let novofundador = prompt("Digite o novo fundador");
+            if(novofundador == null){
+                return alert("Edição de cadastro encerrado!");
+            }
             if (!novofundador == "") {
                 time.fundador = novofundador;
             }
@@ -750,12 +817,6 @@ function editarTime(){
         return alert("Jogador não cadstrado.");
     }
 }
-
-
-
-
-
-
 
 
 function editarContratacao(){
@@ -804,6 +865,11 @@ function editarContratacao(){
         return alert("Jogador não cadstrado.");
     }
 }
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////FUNÇÕES RELATÒRIOS
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 

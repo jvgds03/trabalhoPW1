@@ -706,7 +706,7 @@ function editarJogador(){
 
             document.getElementById("show").innerHTML = "";
 
-            string = (
+            let string = (
                 "<br>JOGADOR EDITADO "  +
                 "<br>Nome: " + jogador.nome +
                 "<br>CPF: " + jogador.cpf + 
@@ -810,7 +810,7 @@ function editarTime(){
 
             document.getElementById("show").innerHTML = "";
 
-            string = (
+            let string = (
                 "<br>TIME EDITADO "  +
                 "<br>Nome: " + time.nome +
                 "<br>CODIGO: " + time.codigo + 
@@ -863,7 +863,7 @@ function editarContratacao(){
 
             document.getElementById("show").innerHTML = "";
 
-            string = (
+            let string = (
                 "<br>CONTRATO" +
                 "<br>CPF Jogador : " + contrato.cpfJogador +
                 "<br>CODIGO Time : " + contrato.codTime + 
@@ -887,7 +887,135 @@ function editarContratacao(){
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+function relatorioJogadoresPorPosicao() {
+    let posicao = prompt("Escolha a posição do jogador\n"
+                            + "1 - Goleiro\n"
+                            + "2 - Defesa\n"
+                            + "3 - Meio-campo\n"
+                            + "4 - Ataque");
 
+    switch(posicao) {
+        case "1":
+            posicao = "Goleiro";
+            break;
+        case "2":
+            posicao = "Defesa";
+            break
+        case "3":
+            posicao = "Meio-campo";
+            break
+        case "4":
+            posicao = "Ataque";
+            break
+        default:
+            return alert("Resposta inválida")
+    }   
+
+
+  
+    let jogadoresPosicao = [];
+    let timeBuscado = [];
+    let nomeTime = [];
+
+    // Percorrer a lista de times
+    for (let i = 0; i < jogadores.length; i++) {
+      
+        if(jogadores[i].posicao == posicao){
+            jogadoresPosicao.push(jogadores[i]);
+        }   
+    }
+
+    if(jogadoresPosicao.length > 0){
+        for(let i = 0; i < jogadoresPosicao.length; i++){
+            for(let j = 0; j < contratacao.length; j++){
+                if(jogadoresPosicao[i].cpf == contratacao[j].cpfJogador){
+                    timeBuscado.push(contratacao[j]);
+                }
+            }
+        }
+
+
+        for(let i = 0; i < times.length; i++){
+            for(let j = 0; j < timeBuscado.length; j++){
+                if(times[i].codigo == timeBuscado[j].codTime){
+                    nomeTime.push(times[i]);
+                }
+            }
+        }
+
+        document.getElementById("show").innerHTML = "";
+
+        for(let i = 0; i < jogadoresPosicao.length; i++){
+
+            let string = (
+                "<br>TIME : " +   nomeTime[i].nome + 
+                "<br>JOGADOR : " + jogadoresPosicao[i].nome + 
+                "<br>"
+            );
+    
+             document.getElementById("show").innerHTML += string;    
+        }
+        console.log(nomeTime);
+    }
+
+    if(jogadoresPosicao.length == 0){
+        alert("Não há nenhum jogador nessa posição");
+    }
+
+    // b) Mostrar todos os dados dos times que possuem mais do que X fundadores, sendo X fornecido pelo usuário:
+
+}
+
+
+
+function relatorioTimesMaisFundadores() {
+    let numFundadores =  prompt("Digite a quantidade de fundadores para a busca");
+
+    // if(numFundadores == null){
+    //     return alert("Digite um numero!");
+    // }
+    console.log(numFundadores);
+    
+
+    if(isNaN(numFundadores) ||numFundadores < 1 || numFundadores == ""){
+        return alert("Digite apenas numeros miores que zero(0)");
+    }
+
+    document.getElementById("show").innerHTML = "";
+
+    for(let i = 0; i < times.length; i++){
+        if(times[i].fundador.length == numFundadores){
+            let string = (              
+                "<br>NOME DO TIME: " + times[i].nome +
+                "<br>CODIGO: " + times[i].codigo + 
+                "<br>Dt Fundação: " + times[i].dataFundacao + 
+                "<br>Logradouro: " + times[i].logradouro + 
+                "<br>Número: " + times[i].nro +
+                "<br>CEP: " + times[i].cep +
+                "<br>Cidade: " + times[i].cidade +
+                "<br>Estado: " + times[i].estado +
+                "<br>Telefone: " + times[i].telefone +
+                "<br>Fundador: " + times[i].fundador + "<br>"
+            );
+            document.getElementById("show").innerHTML += string;
+        }
+    }
+
+  // Percorrer a lista de times
+//   for (let i = 0; i < times.length; i++) {
+//     const time = times[i];
+    
+//     // Verificar o número de fundadores do time
+//     if (time.fundadores.length == numFundadores) {
+//       console.log("Time:", time.nome);
+//       console.log("Data de Fundação:", time.dataFundacao);
+//       console.log("Logradouro:", time.logradouro);
+//       // Exibir os demais dados do time
+//     }
+//   }
+}
+    
+  
 
 
 
